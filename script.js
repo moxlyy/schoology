@@ -51,8 +51,8 @@ document.addEventListener("keydown", e => {
     case "arrowdown": nes.buttonDown(1, jsnes.Controller.BUTTON_DOWN); break;
     case "arrowleft": nes.buttonDown(1, jsnes.Controller.BUTTON_LEFT); break;
     case "arrowright": nes.buttonDown(1, jsnes.Controller.BUTTON_RIGHT); break;
-    case "z": nes.buttonDown(1, jsnes.Controller.BUTTON_A); break; // A
-    case "x": nes.buttonDown(1, jsnes.Controller.BUTTON_B); break; // B
+    case "z": nes.buttonDown(1, jsnes.Controller.BUTTON_A); break;
+    case "x": nes.buttonDown(1, jsnes.Controller.BUTTON_B); break;
     case "enter": nes.buttonDown(1, jsnes.Controller.BUTTON_START); break;
     case "shift": nes.buttonDown(1, jsnes.Controller.BUTTON_SELECT); break;
   }
@@ -70,3 +70,12 @@ document.addEventListener("keyup", e => {
     case "shift": nes.buttonUp(1, jsnes.Controller.BUTTON_SELECT); break;
   }
 });
+
+// 📝 modal logic
+const modal = document.getElementById("controlsModal");
+const showBtn = document.getElementById("showControls");
+const closeBtn = document.getElementById("closeModal");
+
+showBtn.onclick = () => { modal.style.display = "block"; };
+closeBtn.onclick = () => { modal.style.display = "none"; };
+window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };

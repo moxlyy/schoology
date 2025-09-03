@@ -10,9 +10,25 @@
   <div class="controls">
     <input type="file" id="romLoader" accept=".nes" />
     <button onclick="goFullscreen()">Fullscreen</button>
+    <button id="showControls">Controls</button>
   </div>
 
   <canvas id="screen" width="256" height="240"></canvas>
+
+  <!-- Controls modal -->
+  <div id="controlsModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <h2>🎮 Controls</h2>
+      <ul>
+        <li>⬆️ ⬇️ ⬅️ ➡️ = D-Pad</li>
+        <li>Z = A button</li>
+        <li>X = B button</li>
+        <li>Enter = Start</li>
+        <li>Shift = Select</li>
+      </ul>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/jsnes/dist/jsnes.min.js"></script>
   <script src="script.js"></script>
