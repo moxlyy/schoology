@@ -1,2 +1,2 @@
 # schoology
-hosted on schoology.github.io
+hosted on [schoology.github.io](https://moxlyy.github.io/schoology/)

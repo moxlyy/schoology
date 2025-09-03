@@ -44,7 +44,7 @@ function goFullscreen() {
   }
 }
 
-// 🎮 keyboard input mapping
+// keyboard input mapping
 document.addEventListener("keydown", e => {
   switch (e.key.toLowerCase()) {
     case "arrowup": nes.buttonDown(1, jsnes.Controller.BUTTON_UP); break;
@@ -71,7 +71,7 @@ document.addEventListener("keyup", e => {
   }
 });
 
-// 📝 modal logic
+// modal logic
 const modal = document.getElementById("controlsModal");
 const showBtn = document.getElementById("showControls");
 const closeBtn = document.getElementById("closeModal");
