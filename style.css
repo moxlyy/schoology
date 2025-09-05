@@ -1,5 +1,5 @@
 body {
-  background: #f1f3f4; /* classroom vibes */
+  background: #f1f3f4;
   font-family: sans-serif;
   margin: 0;
   text-align: center;
@@ -11,6 +11,23 @@ body {
   padding: 10px;
   font-size: 20px;
   font-weight: bold;
+}
+
+.tabs {
+  margin: 10px;
+}
+.tab-button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #ccc;
+  font-weight: bold;
+  cursor: pointer;
+}
+.tab-button.active {
+  background: #4285f4;
+  color: white;
 }
 
 .controls {
@@ -40,7 +57,7 @@ canvas {
 
 /* modal styling */
 .modal {
-  display: none; /* hidden by default */
+  display: none;
   position: fixed;
   z-index: 999;
   left: 0; top: 0;
@@ -48,7 +65,6 @@ canvas {
   overflow: auto;
   background: rgba(0, 0, 0, 0.5);
 }
-
 .modal-content {
   background: white;
   margin: 10% auto;
@@ -58,24 +74,7 @@ canvas {
   text-align: left;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
-
-.modal-content h2 {
-  margin-top: 0;
-}
-
-.modal-content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.modal-content li {
-  margin: 8px 0;
-  font-size: 16px;
-}
-
-#closeModal {
-  float: right;
-  font-size: 22px;
-  font-weight: bold;
-  cursor: pointer;
-}
+.modal-content h2 { margin-top: 0; }
+.modal-content ul { list-style: none; padding: 0; }
+.modal-content li { margin: 8px 0; font-size: 16px; }
+#closeModal { float: right; font-size: 22px; font-weight: bold; cursor: pointer; }

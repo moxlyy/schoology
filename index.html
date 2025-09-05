@@ -7,30 +7,34 @@
 <body>
   <div class="header">Schoology</div>
 
+  <!-- Emulator Tabs -->
+  <div class="tabs">
+    <button class="tab-button active" data-emulator="nes">NES</button>
+    <button class="tab-button" data-emulator="gb">Game Boy</button>
+  </div>
+
   <div class="controls">
-    <input type="file" id="romLoader" accept=".nes" />
+    <input type="file" id="romLoader" />
     <button onclick="goFullscreen()">Fullscreen</button>
     <button id="showControls">Controls</button>
   </div>
 
-  <canvas id="screen" width="256" height="240"></canvas>
+  <canvas id="screen" width="512" height="480"></canvas>
 
   <!-- Controls modal -->
   <div id="controlsModal" class="modal">
     <div class="modal-content">
       <span id="closeModal">&times;</span>
       <h2>Controls</h2>
-      <ul>
-        <li>⬆️ ⬇️ ⬅️ ➡️ = D-Pad</li>
-        <li>Z = A button</li>
-        <li>X = B button</li>
-        <li>Enter = Start</li>
-        <li>Shift = Select</li>
+      <ul id="controlsList">
+        <!-- gets swapped depending on emulator -->
       </ul>
     </div>
   </div>
 
+  <!-- Libs -->
   <script src="https://unpkg.com/jsnes/dist/jsnes.min.js"></script>
+  <script src="https://unpkg.com/js-gb/dist/js-gb.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
