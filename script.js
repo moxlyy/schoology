@@ -5,14 +5,11 @@ const imageData = context.getImageData(0, 0, 256, 240);
 const nes = new jsnes.NES({
   onFrame(frameBuffer) {
     for (let i = 0; i < frameBuffer.length; i++) {
-      imageData.data[i * 4 + 0] = (frameBuffer[i] >> 8) & 0xff;   // red
-      imageData.data[i * 4 + 1] = (frameBuffer[i] >> 16) & 0xff;  // green
-      imageData.data[i * 4 + 2] = frameBuffer[i] & 0xff;          // blue
-      imageData.data[i * 4 + 3] = 0xff;                           // alpha
-
-
+      imageData.data[i * 4 + 0] = (frameBuffer[i] >> 16) & 0xff; // red
+      imageData.data[i * 4 + 1] = (frameBuffer[i] >> 8) & 0xff;  // green
+      imageData.data[i * 4 + 2] = frameBuffer[i] & 0xff;         // blue
+      imageData.data[i * 4 + 3] = 0xff;                          // alpha
     }
-    context.putImageData(imageData, 0, 0);
   },
   onStatusUpdate: console.log,
   onAudioSample: () => {}
@@ -25,15 +22,20 @@ document.getElementById("romLoader").addEventListener("change", e => {
     const reader = new FileReader();
     reader.onload = function() {
       nes.loadROM(reader.result);
-      frameLoop();
+      requestAnimationFrame(frameLoop);
     };
     reader.readAsBinaryString(file);
   }
 });
 
-// render loop
-function frameLoop() {
-  nes.frame();
+// render loop, locked to 60fps
+let lastFrameTime = 0;
+function frameLoop(timestamp) {
+  if (timestamp - lastFrameTime >= 1000 / 60) {
+    nes.frame();
+    context.putImageData(imageData, 0, 0);
+    lastFrameTime = timestamp;
+  }
   requestAnimationFrame(frameLoop);
 }
 
