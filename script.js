@@ -5,10 +5,11 @@ const imageData = context.getImageData(0, 0, 256, 240);
 const nes = new jsnes.NES({
   onFrame(frameBuffer) {
     for (let i = 0; i < frameBuffer.length; i++) {
-      imageData.data[i * 4 + 0] = frameBuffer[i] & 0xff;         // red
-      imageData.data[i * 4 + 1] = (frameBuffer[i] >> 8) & 0xff;  // green
-      imageData.data[i * 4 + 2] = (frameBuffer[i] >> 16) & 0xff; // blue
-      imageData.data[i * 4 + 3] = 0xff;                          // alpha
+      const color = frameBuffer[i]; // 0xAARRGGBB
+      imageData.data[i * 4 + 0] = (color >> 16) & 0xff; // R
+      imageData.data[i * 4 + 1] = (color >> 8) & 0xff;  // G
+      imageData.data[i * 4 + 2] = color & 0xff;         // B
+      imageData.data[i * 4 + 3] = 0xff;                 // A
     }
   },
   onStatusUpdate: console.log,
